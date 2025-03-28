@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator & Scanner</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <!-- QR Code Generator CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- jsQR CDN for scanning -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+  <body>
+    <!-- Header with Logo and Personal Links -->
+    <header>
+      <div class="logo">
+        <img src="2.png" alt="Logo" />
+        <h3>QR Code Generator & Scanner</h3>
+      </div>
+      <div class="footer-links">
+        <a href="drewsky.vercel.app" target="_blank">
+          <i class="fas fa-music"></i>
+          <span>Music Downloader</span>
+        </a>
+        <a href="https://drewgalowaydev.github.io/Git-developers-detector/" target="_blank">
+          <i class="fab fa-github"></i>
+          <span>Git Developer Detector</span>
+        </a>
+        <a href="https://drewgalowaydev.github.io/robinsoncv/" target="_blank">
+          <i class="fas fa-user-circle"></i>
+          <span>My Profile</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+      <button class="tab-btn active" data-tab="generator">Generate QR</button>
+      <button class="tab-btn" data-tab="scanner">Scan QR</button>
+      <button class="tab-btn" data-tab="history">History</button>
+      <button class="tab-btn" data-tab="settings">Settings</button>
+    </div>
+
+    <!-- Main Content Sections -->
+    <main>
+      <!-- QR Code Generator Section (Existing) -->
+      <section id="generator" class="tab-content active">
+        <div class="wrapper">
+          <div class="title">
+            <h1>QR Code Generator</h1>
+          </div>
+          <div class="content">
+            <div class="input">
+              <input type="text" id="userInput" placeholder="Enter some text or URL" />
+            </div>
+            <div class="options">
+              <select class="sizeOptions">
+                <option value="100" selected>100 x 100</option>
+                <option value="200">200 x 200</option>
+                <option value="300">300 x 300</option>
+              </select>
+              <div>
+                <input type="color" id="BGColor" class="color-inp" />
+                <input type="color" id="FGColor" class="color-inp" />
+              </div>
+            </div>
+            <div class="box">
+              <button id="submit" disabled>Generate</button>
+              <a href="#" id="download" class="hide">Download</a>
+            </div>
+            <div class="container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QR Code Scanner Section -->
+      <section id="scanner" class="tab-content">
+        <div class="scanner-wrapper">
+          <h2>QR Code Scanner</h2>
+          <div class="scanner-options">
+            <button id="start-camera">Start Camera Scan</button>
+            <button id="stop-camera" disabled>Stop Scan</button>
+          </div>
+          <div class="video-container">
+            <video id="video" playsinline></video>
+            <canvas id="canvas" class="hide"></canvas>
+          </div>
+          <div class="upload-section">
+            <h3>Or upload a QR Code image</h3>
+            <input type="file" id="upload" accept="image/*" />
+          </div>
+          <div id="scan-result"></div>
+        </div>
+      </section>
+
+      <!-- History Section -->
+      <section id="history" class="tab-content">
+        <div class="history-wrapper">
+          <h2>History</h2>
+          <ul id="history-list">
+            <!-- History items will appear here -->
+          </ul>
+          <button id="clear-history">Clear History</button>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings" class="tab-content">
+        <div class="settings-wrapper">
+          <h2>Settings</h2>
+          <form id="settings-form">
+            <label for="defaultSize">Default QR Size:</label>
+            <select id="defaultSize">
+              <option value="100">100 x 100</option>
+              <option value="200">200 x 200</option>
+              <option value="300">300 x 300</option>
+            </select>
+            <label for="defaultBG">Default Background Color:</label>
+            <input type="color" id="defaultBG" value="#ffffff" />
+            <label for="defaultFG">Default Foreground Color:</label>
+            <input type="color" id="defaultFG" value="#9b51e0" />
+            <button type="submit">Save Settings</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer with Personal Links -->
+    <footer>
+      <p>© 2025 Drewsky All rights reserved.</p>
+      <nav>
+        <h6>Follow Me</h6>
+        <ul class="social-icons">
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=100090282941294" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/robinson-otochi-921bb4311" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/DrewGalowayDev" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+     
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
